@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Mapping Vertigo v0.1</title>
+<!-- style set up -->
+<style>
+  html { height: 100%; }
+  body { height: 100%; 
+         margin: 0; 
+		 padding: 0; 
+		 background-color: #31315E;		 
+	    }
+  #map_canvas { width: 100%; height: 1000px; }
+</style>
+
+<!-- key bootstrap call for gmaps api - notice use of numbered version 3.10 & required sensor attrib -->
+<script src="http://maps.google.com/maps/api/js?v=3.11&sensor=false"></script>
+
+<script>
+  function init() {
+    var sfCenter = new google.maps.LatLng(+37.75,-122.45); // SF, CA  (zoom: 12)
+    
+	// some stylized map options
+	var vertigoStyles = [
+		{
+			featureType: "all",
+			stylers: [
+				{ hue: '#0000B0' }, 
+				{ invert_lightness: true},
+                { saturation: -30 }
+			]
+		}
+	]
+	// use vertigo-styled icon v1.0 for markers
+	var vertigoIcon = '../img/vertigo-icon2.png';
+    var vertigoAltIcon = '../img/vertigo-icon4.png';
+    
+	
+	// set Map Options 
+	var myOptions = {
+      zoom: 13,
+      center: sfCenter,
+      mapTypeId: google.maps.MapTypeId.ROADMAP, // must specify map type in v3 (no default) TERRAIN || ROADMAP || SATELLITE || HYBRID
+	  styles: vertigoStyles,
+	  zoomControl: true,
+      zoomControlOptions: {
+	      style: google.maps.ZoomControlStyle.SMALL
+	  },
+      mapTypeControl: false
+    };
+	
+    // instantiate a new Map object
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  
+	// 1- Create pre-geocoded Vertigo POIs (JSON data structure pending) 
+	
+	var ernies = new google.maps.LatLng(+37.796959,-122.403656); 
+    var brocklebank = new google.maps.LatLng(+37.793087,-122.41047);
+    var missionDolores = new google.maps.LatLng(+37.764283,-122.426862); 
+	var palace = new google.maps.LatLng(+37.784765,-122.500497);
+    var fortPoint = new google.maps.LatLng(+37.811,-122.477); 
+	var scotties = new google.maps.LatLng(+37.802476,-122.416634);
+    
+    // 2- Create Marker objects for Vertigo POIs 
+	var erniesMarker = new google.maps.Marker( { 
+        position: ernies,
+	    map: map,
+		icon: vertigoIcon,
+		title: 'Ernie\'s Restaurant'
+    } );
+	var brocklebankMarker = new google.maps.Marker( { 
+        position: brocklebank,
+		icon: vertigoIcon,
+	    map: map,
+		title: 'The Brocklebank'
+    } );
+	var missionDoloresMarker = new google.maps.Marker( { 
+        position: missionDolores,
+	    map: map,
+		icon: vertigoIcon,
+		title: 'Mission Dolores'
+    } );
+	var palaceMarker = new google.maps.Marker( { 
+        position: palace,
+	    map: map,
+		icon: vertigoIcon,
+		title: 'Palace of the Legion of Honor'
+    } );
+    var fortPointMarker = new google.maps.Marker( { 
+        position: fortPoint,
+	    map: map,
+		icon: vertigoAltIcon,
+		title: 'Fort Point'
+    } );
+	var scottiesMarker = new google.maps.Marker( { 
+        position: scotties,
+	    map: map,
+		icon: vertigoIcon,
+		title: 'Scottie\'s Place'
+    } );
+	
+	
+	// 3- Create custom HTML snippets for InfoWindows
+	var erniesHTML = '<div style="background-color:#31315E; color:#FFF; padding: 5px; border-top-right-radius: 20px;">' + 
+	                  '<strong>Ernie\'s Restaurant</strong>: <br />847 Montgomery Street<br />' +
+					  '<img src="../img/v-ernies-madeline.jpg" width="250px" style="margin-left:20px;" /><br />' +
+					  '<em>"The Ambrosia Room serves as a elegant venue for Madeline\'s dramatic first appearance and close-up."</em></div>'; 
+	var brocklebankHTML = '<div style="background-color:#31315E; color:#FFF; padding: 5px; border-top-right-radius: 20px;">' + 
+	                  '<strong>The Brocklebank</strong>: 1000 Mason Street<br />' +
+					  '<img src="../img/v-brocklebank.jpg" width="290px" /><br />' +
+					  '<em>"Scottie\'s starting point for him to tail Madeline around The City as she leaves her famous SF apartment building."</em></div>'; 
+	var missionHTML = '<div style="background-color:#31315E; color:#FFF; padding: 5px; border-top-right-radius: 20px;">' + 
+	                  '<strong>Mission Dolores</strong>: 3321 16th Street<br />' +
+					  '<img src="../img/v-mission-dolores.jpg" width="290px" /><br />' +
+					  '<em>"Hitch filmed the graveyard scene with fog filters to heighten the ethereal effect."</em></div>'; 
+	var palaceHTML = '<div style="background-color:#31315E; color:#FFF; padding: 5px; border-top-right-radius: 20px;">' + 
+	                  '<strong>Palace of the Legion of Honor</strong>:<br /> 100 34th Avenue<br />' +
+					  '<img src="../img/v-palace-carlotta.jpg" width="290px" /><br />' +
+					  '<em>"The neo-classic venue for Madeline\'s haunting by the Portait of Carlotta."</em></div>'; 
+	var fortPointHTML = '<div style="background-color:#31315E; color:#FFF; padding: 5px; border-top-right-radius: 20px;">' + 
+	                  '<strong>Fort Point</strong>: Presidio at Golden Gate Bridge<br />' +
+					  '<img src="../img/v-fortpoint-damsel.jpg" width="290px" /><br />' +
+					  '<em>"Scottie rescues Madeline after her jump into San Francisco Bay.<br />' + 
+					  'Widely regarded as one of the most iconic images in all of cinema..."</em></div>';
+	var scottiesHTML = '<div style="background-color:#31315E; color:#FFF; padding: 5px; border-top-right-radius: 20px;">' + 
+	                  '<strong>Scottie\'s Place</strong>: 900 Lombard Street<br />' +
+					  '<img src="../img/v-scotties-frontporch.jpg" width="290px" /><br />' +
+					  '<em>"Scottie enjoys his unexpected house guest and fellow wanderer while he can..."</em></div>'; 					  
+   // 4- Create InfoWindow objects for V POIs
+   var erniesWindow = new google.maps.InfoWindow({
+      content:  erniesHTML,
+	  position:  ernies,
+	  zIndex: 999,
+	  maxWidth: 300
+   });
+   var brocklebankWindow = new google.maps.InfoWindow({
+      content:  brocklebankHTML,
+	  position:  brocklebank,
+	  zIndex: 922,
+	  maxWidth: 300
+   });
+   var missionWindow = new google.maps.InfoWindow({
+      content:  missionHTML,
+	  position:  missionDolores,
+	  zIndex: 933,
+	  maxWidth: 300
+   });
+   var palaceWindow = new google.maps.InfoWindow({
+      content:  palaceHTML,
+	  position:  palace,
+	  zIndex: 944,
+	  maxWidth: 300
+   });
+   var fortPointWindow = new google.maps.InfoWindow({
+      content:  fortPointHTML,
+	  position:  fortPoint,
+	  zIndex: 955,
+	  maxWidth: 300
+   });
+   var scottiesWindow = new google.maps.InfoWindow({
+      content:  scottiesHTML,
+	  position:  scotties,
+	  zIndex: 966,
+	  maxWidth: 300
+   });
+   
+   // 5- Add Event Listeners for onClick of V POI Markers
+   // --> todo-B: loop thru and assign events via js array
+	google.maps.event.addListener(erniesMarker, 'click', function(){ 
+		erniesWindow.open(map,erniesMarker);
+		map.panBy(0,-400);
+   });
+   google.maps.event.addListener(brocklebankMarker, 'click', function(){ 
+      brocklebankWindow.open(map,brocklebankMarker);
+	  map.panBy(0,-200);
+   });  
+   google.maps.event.addListener(missionDoloresMarker, 'click', function(){ 
+      missionWindow.open(map,missionDoloresMarker);
+	  map.panBy(0,-100);
+   });
+   google.maps.event.addListener(palaceMarker, 'click', function(){ 
+      palaceWindow.open(map,palaceMarker);
+	  map.panBy(0,-400);
+   });
+   google.maps.event.addListener(fortPointMarker, 'click', function(){ 
+      fortPointWindow.open(map,fortPointMarker);
+	  map.panBy(0,-400);
+   });
+   google.maps.event.addListener(scottiesMarker, 'click', function(){ 
+      scottiesWindow.open(map,scottiesMarker);
+	  map.panBy(0,-300);
+   });
+  } // end init
+  
+window.onload = init; // event  
+</script>
+</head>
+<body>
+   <div id="wrapper" style="width:1300px;">
+	<div style="zindex: -11;"><img src="../img/mapping-vertigo-logo-150.jpg" style="float:left;" />
+	<img src="../img/sf-panorama700.jpg" width="1000px" height="150px" style="float:left;" /></div>
+	<div id="map_canvas" style="float:left; padding-top:-5px;"></div>
+	<br clear="all" />
+   </div>
+</body>
+</html>

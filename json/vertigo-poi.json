@@ -1,0 +1,58 @@
+{
+	"vertigo-points" : [
+		{	
+			"name": "fortPoint",
+			"label": "Fort Point",
+			"address": "The Presidio at Golden Gate Bridge",
+			"coords": {
+				"lat": 37.811,
+				"long": -122.477
+				}		
+		},
+		{	
+			"name": "missionDolores",
+			"label": "Mission Dolores",
+			"address": "3321 16th Street",
+			"coords": {
+				"lat": 37.764283,
+				"long": -122.426862
+				}		
+		},
+		{	
+			"name": "ernies",
+			"label": "Ernie's Restaurant",
+			"address": "847 Montgomery Street",
+			"coords": {
+				"lat": 37.796959,
+				"long": -122.403656
+				}		
+		},
+		{	
+			"name": "palace",
+			"label": "Palace of the Legion of Honor",
+			"address": "100 34th Avenue",
+			"coords": {
+				"lat": 37.784765,
+				"long": -122.500497
+				}		
+		},	
+		{	
+			"name": "scotties",
+			"label": "Scottie's Place",
+			"address": "900 Lombard Street",
+			"coords": {
+				"lat": 37.802476,
+				"long": -122.416634
+				}		
+		},
+		{	
+			"name": "brocklebank",
+			"label": "The Brocklebank",
+			"address": "1000 Mason Street",
+			"coords": {
+				"lat": 37.793087,
+				"long": -122.41047
+				}		
+		}
+	]
+}

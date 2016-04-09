@@ -1,0 +1,64 @@
+{
+	"vertigopoi" : [
+		{	
+			"label": "Fort Point",
+			"imageString": "v-fortpoint-damsel.jpg",
+			"descString": "Scottie rescues Madeline after her jump into San Francisco Bay. Widely regarded as one of the most iconic images in all of cinema...",
+			"address": "The Presidio at Golden Gate Bridge",
+			"coords": {
+				"lat": 37.811,
+				"long": -122.477
+				}		
+		},
+		{	
+			"label": "Mission Dolores",
+			"imageString": "v-mission-dolores.jpg",
+			"descString": "Hitch filmed the graveyard scene with fog filters to heighten the ethereal effect.",
+			"address": "3321 16th Street",
+			"coords": {
+				"lat": 37.764283,
+				"long": -122.426862
+				}		
+		},
+		{	
+			"label": "Ernie's Restaurant",
+			"imageString": "v-ernies-madeline.jpg",
+			"descString": "The Ambrosia Room serves as a elegant venue for Madeline's dramatic first appearance and close-up.",
+			"address": "847 Montgomery Street",
+			"coords": {
+				"lat": 37.796959,
+				"long": -122.403656
+				}		
+		},
+		{	
+			"label": "Palace of the Legion of Honor",
+			"imageString": "v-palace-carlotta.jpg",
+			"descString": "The neo-classic venue for Madeline's haunting by the Portait of Carlotta.",
+			"address": "100 34th Avenue",
+			"coords": {
+				"lat": 37.784765,
+				"long": -122.500497
+				}		
+		},	
+		{	
+			"label": "Scottie's Place",
+			"imageString": "v-scotties-frontporch.jpg",
+			"descString": "Scottie enjoys his unexpected house guest and fellow wanderer while he can...",
+			"address": "900 Lombard Street",
+			"coords": {
+				"lat": 37.802476,
+				"long": -122.416634
+				}		
+		},
+		{	
+			"label": "The Brocklebank",
+			"imageString": "v-brocklebank.jpg",
+			"descString": "Scottie's starting point for him to tail Madeline around The City as she leaves her famous SF apartment building.",
+			"address": "1000 Mason Street",
+			"coords": {
+				"lat": 37.793087,
+				"long": -122.41047
+				}		
+		}
+	]
+}
